@@ -11,7 +11,8 @@ The project follows a client-server architecture with a clear separation of conc
 ├── /client           # Frontend PixiJS code
 ├── /server           # Backend Node.js, Express, Socket.io code
 ├── /shared           # Shared resources between client and server
-└── /assets           # Game assets (sprites, backgrounds, audio, effects)
+├── /assets           # Game assets (sprites, backgrounds, audio, effects)
+└── /tools            # Utility scripts for development
 ```
 
 ## Component Details
@@ -39,6 +40,36 @@ The project follows a client-server architecture with a clear separation of conc
   - Includes basic Socket.io connection handling
   - Will grow to include player authentication, game state management, and arena matchmaking
 
+### Asset Management Architecture
+
+- **`/assets`**: Main directory for all game assets, structured for optimal organization:
+
+  - **`/assets/sprites`**: Character and object sprites:
+    - **`/player`**: Player wizard sprites in different states (idle, moving, casting)
+    - **`/enemies`**: Various enemy sprites (slime, skeleton, dark wizard)
+
+  - **`/assets/backgrounds`**: Environmental visuals:
+    - **`/tiles`**: Individual tileset components (floor, wall, water)
+    - **`arena_tileset.png`**: Combined tileset for efficient rendering
+
+  - **`/assets/effects`**: Visual effects for game interactions:
+    - **`/spells`**: Spell effects (fireball, ice spike, lightning)
+
+  - **`/assets/audio`**: Sound files:
+    - **`/sfx`**: Sound effects for game actions (spell casting, hit, defeat)
+    - **`/music`**: Background music tracks
+
+### Utility Tools
+
+- **`/tools/generate-assets.js`**: 
+  - Node.js script that generates pixel art assets programmatically
+  - Creates consistent 8-bit style sprites, effects, and tiles
+  - Optimizes assets for web performance
+
+- **`/tools/sprite_generator.html`**: 
+  - Browser-based tool for visualizing and exporting game sprites
+  - Provides an interactive interface for asset creation
+
 ## Design Principles
 
 1. **Modular Architecture**: Each component has a single responsibility, housed in its own file/directory.
@@ -56,6 +87,12 @@ The project follows a client-server architecture with a clear separation of conc
    - Structure supports future expansion of features
    - MongoDB integration (coming in Step 7) will provide persistent storage
    - Socket.io rooms (coming in Step 8) will manage player arenas
+
+5. **Asset Management**:
+   - Assets are organized in a logical directory structure for easy access
+   - Sprite sheets and tilesets optimize rendering performance
+   - Tools for asset generation ensure consistent style and quality
+   - Pixel art assets are designed with an 8-bit retro aesthetic
 
 ## Future Architectural Expansion
 
